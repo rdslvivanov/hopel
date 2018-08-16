@@ -12,6 +12,7 @@ plugins {
 
     // Apply the groovy plugin to also add support for Groovy (needed for Spock)
     id 'groovy'
+    id 'idea'
 }
 
 dependencies {
@@ -20,12 +21,14 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:23.0'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
 
     // Use the latest Groovy version for Spock testing
     testImplementation 'org.codehaus.groovy:groovy-all:2.4.15'
 
     // Use the awesome Spock testing and specification framework even with Java
     testImplementation 'org.spockframework:spock-core:1.0-groovy-2.4'
+
     testImplementation 'junit:junit:4.12'
 }
 

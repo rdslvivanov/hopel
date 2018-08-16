@@ -15,5 +15,5 @@ public interface HR {
 
     void stopTeam(final String teamName);
 
-    Monitor startTheCompany();
+    Monitor startProject();
 }

@@ -23,10 +23,17 @@ public abstract class Result<T> {
 
     public static <T> Result<T> ofThrowable(final ThrowableSupplier<T> t) {
         try {
-            return new Success(t.get());
+            return success(t.get());
         } catch (Exception e) {
-            return new Failure(e);
+            return failure(e);
         }
+    }
+
+    public static <T> Result<T> ofOptional(final Optional<T> t) {
+        if (t.isPresent()) {
+            return success(t.get());
+        }
+        return failure("Value is unavailable");
     }
 
     public static <T> Result<T> ofNullable(final T t, final String error) {
@@ -44,7 +51,9 @@ public abstract class Result<T> {
     public abstract <U> Result<U> flatMap(final Function<T, Result<U>> f);
 
     public abstract void bind(final Consumer<T> success, final Consumer<Exception> failure);
+
     public abstract Result<T> mapFailure(String s);
+
     public abstract boolean isSuccess();
 
     private static class Success<T> extends Result<T> {
@@ -144,5 +153,6 @@ public abstract class Result<T> {
         public boolean isSuccess() {
             return false;
         }
+
     }
 }
