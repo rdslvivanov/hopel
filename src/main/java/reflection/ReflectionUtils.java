@@ -1,6 +1,4 @@
-/*
- * Copyright (C) 2018 AlertMe.com Ltd
- */
+
 package reflection;
 
 import com.google.common.collect.Streams;
