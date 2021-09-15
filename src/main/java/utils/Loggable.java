@@ -1,6 +1,4 @@
-/*
- * Copyright (C) 2018 AlertMe.com Ltd
- */
+
 package utils;
 
 import org.slf4j.Logger;
